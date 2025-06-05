@@ -35,4 +35,4 @@ jobs:
           # La carpeta en tu servidor HostGator donde se subirán los archivos.
           # Usualmente es "public_html" o una subcarpeta como "public_html/mi-proyecto".
           # ¡IMPORTANTE! Asegúrate de que esta ruta sea correcta.
-          server-dir: public_html/
+          server-dir: ./
