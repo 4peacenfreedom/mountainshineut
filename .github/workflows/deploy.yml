@@ -1,0 +1,38 @@
+# Nombre del Workflow que aparecerá en la pestaña "Actions" de GitHub
+name: Deploy to HostGator
+
+# "on" define cuándo se debe ejecutar esta acción
+on:
+  # Se ejecutará cada vez que hagas un "push"
+  push:
+    # Específicamente a la rama "main". Cámbiala si tu rama principal se llama "master" u otro nombre.
+    branches:
+      - main
+
+# "jobs" son las tareas que se van a ejecutar
+jobs:
+  ftp-deploy:
+    # Nombre del trabajo
+    name: FTP Deploy
+    # La máquina virtual que usará GitHub para correr el trabajo
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Este paso clona tu repositorio en la máquina virtual de GitHub
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Este paso es la acción que sube los archivos por FTP
+      - name: FTP Deploy Action
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          # El servidor FTP. Usa el "Secret" que creamos.
+          server: ${{ secrets.FTP_SERVER }}
+          # El usuario FTP. Usa el "Secret" que creamos.
+          username: ${{ secrets.FTP_USERNAME }}
+          # La contraseña FTP. Usa el "Secret" que creamos.
+          password: ${{ secrets.FTP_PASSWORD }}
+          
+          # La carpeta en tu servidor HostGator donde se subirán los archivos.
+          # Usualmente es "public_html" o una subcarpeta como "public_html/mi-proyecto".
+          # ¡IMPORTANTE! Asegúrate de que esta ruta sea correcta.
+          server-dir: public_html/
