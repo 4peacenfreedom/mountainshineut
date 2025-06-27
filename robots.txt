@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://www.mountainshineut.com/sitemap.xml
+Sitemap: https://www.mountainshineutah.com/sitemap.xml
