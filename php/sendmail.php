@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Recipient
-    $recipient = "mountainshineut@gmail.com"; // Cambiar por el correo del cliente
+    $recipient = "dinayovis.pc.2020@gmail.com"; // Cambiar por el correo del cliente
 
     // Email content
     $subject = "New Contact Message from Website";
